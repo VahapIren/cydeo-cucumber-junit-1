@@ -12,7 +12,7 @@ Feature: Google search functionality
       Given user is on the Google search page
       When user types apple and clicks enter
       Then user sees apple in the google title
-@wip
+
   Scenario: Search funcyionality result title verification
     Given user is on the Google search page
     When user types "apple" and clicks enter

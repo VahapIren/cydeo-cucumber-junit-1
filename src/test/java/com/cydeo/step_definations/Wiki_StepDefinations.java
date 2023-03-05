@@ -1,7 +1,9 @@
 package com.cydeo.step_definations;
 
 import com.cydeo.pages.WikipediaSerchPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -37,5 +39,11 @@ public class Wiki_StepDefinations {
         Assert.assertTrue(wikipediaSerchPage.mainHeader.isDisplayed());
         Assert.assertTrue(wikipediaSerchPage.mainHeader.getText().equals(string));
 
+    }
+
+    @Then("user sees {string} is on the image")
+    public void userSeesIsOnTheImage(String string) {
+        BrowserUtils.sleep(2);
+        Assert.assertTrue(wikipediaSerchPage.imageTitle.getText().equals(string));
     }
 }

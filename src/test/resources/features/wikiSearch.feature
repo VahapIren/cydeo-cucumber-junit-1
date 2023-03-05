@@ -6,12 +6,19 @@ Feature: Wikipedia search functionality and verification
     And user click wiki search button
     Then user sees "Bill Gates" is in the wiki title
 
-    Scenario: Wikipedia Search Functionality Header Verification
+  Scenario: Wikipedia Search Functionality Header Verification
+    Given User is on Wikipedia home page
+    When user types "Steve Jobs" in the wiki search page
+    And user click wiki search button
+    Then user sees "Steve Jobs" is in the main header
+
+    Scenario:  Wikipedia Search Functionality Image Title
       Given User is on Wikipedia home page
       When user types "Steve Jobs" in the wiki search page
       And user click wiki search button
-      Then user sees "Steve Jobs" is in the main header
-@scenarioOutline
+      Then user sees "Steven Paul Jobs" is on the image
+
+  @scenarioOutline
   Scenario Outline: Wikipedia Search Functionality Title Verification
     Given User is on Wikipedia home page
     When user types "<searchValue>" in the wiki search page
@@ -24,6 +31,6 @@ Feature: Wikipedia search functionality and verification
       | Steve Jobs   | Steve Jobs    | Steve Jobs         |  |
       | Bob Marley   | Bob Marley    | Bob Marley         |  |
       | Chuck Norris | Chuck Norris  | Chuck Norris       |  |
-      | Marie Curie  | Marie Curie    | Marie Curie         |  |
+      | Marie Curie  | Marie Curie   | Marie Curie        |  |
 
 

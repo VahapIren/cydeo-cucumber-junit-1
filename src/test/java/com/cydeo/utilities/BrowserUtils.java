@@ -1,11 +1,15 @@
 package com.cydeo.utilities;
 
+import com.cydeo.pages.DropDownsPages;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -59,6 +63,11 @@ public class BrowserUtils {
 
     }
 
+    public static void verifyURLContains(String expectedInURL){
+
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
+    }
+
     /*
     Creating a utility method for ExplicitWait, so we don't have to repeat the lines
      */
@@ -68,4 +77,23 @@ public class BrowserUtils {
         wait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 
+    public static List<String> dropdownOptionsAsString(WebElement dropdowmElement){
+
+        Select select=new Select(dropdowmElement);
+        List<WebElement> actualOptionsAsWebElement=select.getOptions();
+        List<String> actualOptionsAsString=new ArrayList<>();
+        for (WebElement each : actualOptionsAsWebElement) {
+            actualOptionsAsString.add(each.getText());
+        }
+        return actualOptionsAsString;
+    }
+
+    public static void clickRadioButton(List<WebElement> radioButtons,String attributeValue) {
+
+        for (WebElement type : radioButtons) {
+            if (type.getAttribute("value").equalsIgnoreCase(attributeValue)) {
+                type.click();
+            }
+        }
+    }
 }
